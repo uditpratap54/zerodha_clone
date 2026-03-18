@@ -29,8 +29,21 @@ function Navbar() {
           <img src="media/images/logo.svg" style={{ width: "25%" }} alt="Logo" />
         </a>
 
-        {/* links */}
-        <div className="collapse navbar-collapse">
+        {/* TOGGLE BUTTON */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* LINKS */}
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item"><Link className="nav-link" to="/signup">Signup</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
