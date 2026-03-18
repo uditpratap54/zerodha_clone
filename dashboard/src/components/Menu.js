@@ -24,7 +24,7 @@ const Menu = () => {
     const frontendUrl = (
       process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000"
     ).replace(/\/+$/, "");
-    window.location.href = `${frontendUrl}/signin`;
+    window.location.href = `${frontendUrl}/#/signin`;
   };
 
   const username = localStorage.getItem("username") || "User";
