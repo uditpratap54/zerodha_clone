@@ -16,7 +16,7 @@ const SignIn = () => {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await API.post("/login", { email, password });
+      const res = await API.post("/login", { email: email.trim(), password });
 
       if (res.data.success) {
         setMessage({ text: "Login successful! Opening dashboard...", type: "success" });

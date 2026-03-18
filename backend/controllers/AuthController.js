@@ -18,20 +18,27 @@ const getCookieOptions = () => {
 module.exports.Signup = async (req, res, next) => {
   try {
     const { email, password, username, createdAt } = req.body;
+    const normalizedEmail = email?.trim().toLowerCase();
+    const normalizedUsername = username?.trim();
 
-    if (!email || !password || !username) {
+    if (!normalizedEmail || !password || !normalizedUsername) {
       return res.status(400).json({
         message: "Email, username, and password are required",
         success: false,
       });
     }
 
-    const existingUser = await UserModel.findOne({ email });
+    const existingUser = await UserModel.findOne({ email: normalizedEmail });
     if (existingUser) {
       return res.status(409).json({ message: "User already exists", success: false });
     }
 
-    const user = await UserModel.create({ email, password, username, createdAt });
+    const user = await UserModel.create({
+      email: normalizedEmail,
+      password,
+      username: normalizedUsername,
+      createdAt,
+    });
     const token = createSecretToken(user._id);
     res.cookie("token", token, getCookieOptions());
     return res
@@ -50,10 +57,12 @@ module.exports.Signup = async (req, res, next) => {
 module.exports.Login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    if(!email || !password ){
+    const normalizedEmail = email?.trim().toLowerCase();
+
+    if(!normalizedEmail || !password ){
       return res.status(400).json({message:'All fields are required', success: false})
     }
-    const user = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email: normalizedEmail });
     if(!user){
       return res.status(401).json({message:'Incorrect password or email', success: false }) 
     }
