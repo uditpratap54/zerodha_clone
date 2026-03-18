@@ -15,14 +15,19 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://zerodha-clone-landingpage.onrender.com",
+  "https://zerodha-dashboard.onrender.com",
+  "https://frontend-dc9d.onrender.com",
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+  ...(process.env.DASHBOARD_URL ? [process.env.DASHBOARD_URL] : []),
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "https://zerodha-clone-landingpage.onrender.com",
-      "https://zerodha-dashboard.onrender.com",
-    ],
+    origin: allowedOrigins,
     credentials: true,
   })
 );
