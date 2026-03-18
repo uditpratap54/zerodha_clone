@@ -24,7 +24,7 @@ const SignIn = () => {
           const dashboardUrl = (
             process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001"
           ).replace(/\/+$/, "");
-          window.location.href = dashboardUrl;
+          window.location.href = `${dashboardUrl}/#/`;
         }, 800);
       } else {
         setMessage({ text: res.data.message || "Invalid credentials", type: "error" });
