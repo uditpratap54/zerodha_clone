@@ -1,0 +1,48 @@
+services:
+  # ── Backend ────────────────────────────────────────────────
+  - type: web
+    name: zerodha-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Set these in the Render dashboard (Environment tab):
+      - key: MONGO_URL
+        sync: false
+      - key: TOKEN_KEY
+        sync: false
+
+  # ── Frontend (Landing Page) ─────────────────────────────────
+  # URL will be: https://zerodha-clone-landingpage.onrender.com
+  - type: web
+    name: zerodha-clone-landingpage
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      # Set to your backend Render URL in the Render dashboard:
+      - key: REACT_APP_API_BASE_URL
+        sync: false
+      # Set to your dashboard Render URL in the Render dashboard:
+      - key: REACT_APP_DASHBOARD_URL
+        sync: false
+
+  # ── Dashboard ───────────────────────────────────────────────
+  # URL will be: https://zerodha-dashboard.onrender.com
+  - type: web
+    name: zerodha-dashboard
+    runtime: static
+    rootDir: dashboard
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      # Set to your backend Render URL in the Render dashboard:
+      - key: REACT_APP_API_BASE_URL
+        sync: false
+      # Set to your frontend Render URL in the Render dashboard:
+      - key: REACT_APP_FRONTEND_URL
+        sync: false
