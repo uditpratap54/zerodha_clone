@@ -18,8 +18,18 @@ const SignUp = () => {
     setLoading(true);
     setMessage({ text: "", type: "" });
 
+    if (password.trim().length < 8) {
+      setMessage({ text: "Password must be at least 8 characters long", type: "error" });
+      setLoading(false);
+      return;
+    }
+
     try {
-      const res = await API.post("/signup", { email, password, username });
+      const res = await API.post("/signup", {
+        email: email.trim(),
+        password,
+        username: username.trim(),
+      });
 
       if (res.data.success) {
         setMessage({ text: "Account created! Redirecting to login...", type: "success" });
@@ -28,7 +38,12 @@ const SignUp = () => {
         setMessage({ text: res.data.message || "Signup failed", type: "error" });
       }
     } catch (err) {
-      setMessage({ text: err.response?.data?.message || "Signup failed", type: "error" });
+      setMessage({
+        text:
+          err.response?.data?.message ||
+          "Signup failed. Please check that the backend server is running.",
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }
@@ -87,6 +102,7 @@ const SignUp = () => {
                 placeholder="Choose a username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                minLength={3}
                 required
               />
               <span className="input-icon">👤</span>
@@ -99,6 +115,7 @@ const SignUp = () => {
                 placeholder="Min. 8 characters"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                minLength={8}
                 required
               />
               <span

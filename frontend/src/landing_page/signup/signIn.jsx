@@ -21,8 +21,10 @@ const SignIn = () => {
       if (res.data.success) {
         setMessage({ text: "Login successful! Opening dashboard...", type: "success" });
         setTimeout(() => {
-          window.location.href =
-            process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001";
+          const dashboardUrl = (
+            process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001"
+          ).replace(/\/+$/, "");
+          window.location.href = dashboardUrl;
         }, 800);
       } else {
         setMessage({ text: res.data.message || "Invalid credentials", type: "error" });

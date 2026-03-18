@@ -21,9 +21,10 @@ const Menu = () => {
       // ignore errors, proceed with logout
     }
     localStorage.removeItem("username");
-    const frontendUrl =
-      process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
-    window.location.href = frontendUrl + "/signin";
+    const frontendUrl = (
+      process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000"
+    ).replace(/\/+$/, "");
+    window.location.href = `${frontendUrl}/signin`;
   };
 
   const username = localStorage.getItem("username") || "User";

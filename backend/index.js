@@ -21,6 +21,7 @@ const allowedOrigins = [
   "https://zerodha-clone-landingpage.onrender.com",
   "https://zerodha-dashboard.onrender.com",
   "https://frontend-dc9d.onrender.com",
+  "https://dashboard-5k52.onrender.com",
   ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
   ...(process.env.DASHBOARD_URL ? [process.env.DASHBOARD_URL] : []),
 ];

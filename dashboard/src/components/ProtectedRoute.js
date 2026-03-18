@@ -37,9 +37,10 @@ const ProtectedRoute = ({ children }) => {
   }
 
   if (status === "unauth") {
-    const frontendUrl =
-      process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
-    window.location.href = frontendUrl + "/signin";
+    const frontendUrl = (
+      process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000"
+    ).replace(/\/+$/, "");
+    window.location.href = `${frontendUrl}/signin`;
     return null;
   }
 
