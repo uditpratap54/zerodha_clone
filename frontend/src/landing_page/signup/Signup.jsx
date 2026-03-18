@@ -41,7 +41,7 @@ const SignUp = () => {
       setMessage({
         text:
           err.response?.data?.message ||
-          "Signup failed. Please check that the backend server is running.",
+          `Signup failed: ${err.message}. Backend URL: ${API.defaults.baseURL}`,
         type: "error",
       });
     } finally {

@@ -45,6 +45,14 @@ app.use(cookieParser());
 ========================= */
 app.use("/", authRouter);
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Backend is running",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [

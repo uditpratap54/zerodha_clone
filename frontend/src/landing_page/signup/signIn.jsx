@@ -30,7 +30,12 @@ const SignIn = () => {
         setMessage({ text: res.data.message || "Invalid credentials", type: "error" });
       }
     } catch (err) {
-      setMessage({ text: err.response?.data?.message || "Sign In failed", type: "error" });
+      setMessage({
+        text:
+          err.response?.data?.message ||
+          `Sign in failed: ${err.message}. Backend URL: ${API.defaults.baseURL}`,
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }
