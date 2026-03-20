@@ -1,0 +1,242 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 1761 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(ZERODHA CLONE INTERVIEW GUIDE) Tj
+T* () Tj
+T* (Ye PDF Zerodha Clone ke liye Hinglish interview notes hai. Isme MERN architecture, JWT auth,) Tj
+T* (dashboard flow aur important code explanation diya gaya hai.) Tj
+T* () Tj
+T* (1. One-line Introduction) Tj
+T* () Tj
+T* (Zerodha Clone ek MERN-based full-stack stock broker style application hai jisme public) Tj
+T* (landing page, login/signup aur protected portfolio dashboard implement kiya gaya hai.) Tj
+T* () Tj
+T* (2. Short Interview Intro) Tj
+T* () Tj
+T* (Ye project maine portfolio-strength full-stack application ke roop me build kiya. Isme React) Tj
+T* (landing page, separate dashboard app, Express backend, MongoDB data storage aur JWT) Tj
+T* (cookie-based authentication use ki gayi hai. User holdings, positions aur orders related) Tj
+T* (dashboard features dekh sakta hai.) Tj
+T* () Tj
+T* (3. Tech Stack) Tj
+T* () Tj
+T* (- React) Tj
+T* (- React Router) Tj
+T* (- Axios) Tj
+T* (- Chart.js) Tj
+T* (- Node.js) Tj
+T* (- Express) Tj
+T* (- MongoDB) Tj
+T* (- Mongoose) Tj
+T* (- JWT) Tj
+T* (- bcryptjs) Tj
+T* () Tj
+T* (4. Main Features) Tj
+T* () Tj
+T* (- Signup and login) Tj
+T* (- Password hashing) Tj
+T* (- Cookie-based JWT auth) Tj
+T* (- Protected dashboard route) Tj
+T* (- Holdings and positions data) Tj
+T* (- Orders create flow) Tj
+T* (- Watchlist and buy modal) Tj
+T* (- Dashboard username) Tj
+T* () Tj
+T* (5. Architecture) Tj
+T* () Tj
+T* (Project 3 parts me split hai:) Tj
+T* (- frontend public pages) Tj
+T* (- dashboard private app UI) Tj
+T* (- backend REST APIs) Tj
+T* () Tj
+T* (6. Important Code with Line Meaning) Tj
+T* () Tj
+T* (Snippet A: CORS and credentials) Tj
+T* () Tj
+T* (    const allowedOrigins = [ // Allowed frontend/dashboard domains ki list) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 2291 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(      "http://localhost:3000", // Local landing page) Tj
+T* (      "http://localhost:3001", // Local dashboard) Tj
+T* (      "https://zerodha-clone-landingpage.onrender.com", // Hosted frontend) Tj
+T* (      "https://zerodha-dashboard.onrender.com", // Hosted dashboard) Tj
+T* (    ];) Tj
+T* () Tj
+T* (    app.use\() Tj
+T* (      cors\({) Tj
+T* (        origin: allowedOrigins, // Sirf trusted origins allowed hain) Tj
+T* (        credentials: true, // Cookie-based auth requests allow hongi) Tj
+T* (      }\)) Tj
+T* (    \);) Tj
+T* () Tj
+T* (Snippet B: signup) Tj
+T* () Tj
+T* (    const normalizedEmail = email?.trim\(\).toLowerCase\(\); // Email normalization) Tj
+T* (    const normalizedUsername = username?.trim\(\); // Username cleanup) Tj
+T* () Tj
+T* (    const existingUser = await UserModel.findOne\({ email: normalizedEmail }\); // Duplicate check) Tj
+T* (    if \(existingUser\) {) Tj
+T* (      return res.status\(409\).json\({ message: "User already exists", success: false }\); //) Tj
+T* (      Conflict response) Tj
+T* (    }) Tj
+T* () Tj
+T* (    const user = await UserModel.create\({ // User creation) Tj
+T* (      email: normalizedEmail,) Tj
+T* (      password,) Tj
+T* (      username: normalizedUsername,) Tj
+T* (      createdAt,) Tj
+T* (    }\);) Tj
+T* () Tj
+T* (Snippet C: password hashing) Tj
+T* () Tj
+T* (    UserSchema.pre\("save", async function \(\) { // Save se pehle hook chalega) Tj
+T* (      if \(!this.isModified\("password"\)\) { // Agar password change nahi hua) Tj
+T* (        return; // To rehash nahi hoga) Tj
+T* (      }) Tj
+T* () Tj
+T* (      this.password = await bcrypt.hash\(this.password, 12\); // Secure hash create hua) Tj
+T* (    }\);) Tj
+T* () Tj
+T* (Snippet D: session verification route use in dashboard) Tj
+T* () Tj
+T* (    useEffect\(\(\) => {) Tj
+T* (      API.post\("/"\) // Backend verify endpoint hit hota hai) Tj
+T* (        .then\(\(res\) => {) Tj
+T* (          if \(res.data.status\) { // Session valid) Tj
+T* (            localStorage.setItem\("username", res.data.user\); // Username save hua) Tj
+T* (            setStatus\("auth"\); // Dashboard allow hoga) Tj
+T* (          } else {) Tj
+T* (            setStatus\("unauth"\); // Redirect condition) Tj
+T* (          }) Tj
+T* (        }\)) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 1967 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(        .catch\(\(\) => {) Tj
+T* (          setStatus\("unauth"\); // Error ko unauthorized treat kiya) Tj
+T* (        }\);) Tj
+T* (    }, []\);) Tj
+T* () Tj
+T* (Snippet E: axios instance) Tj
+T* () Tj
+T* (    const API = axios.create\({) Tj
+T* (      baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:3002", // Backend URL) Tj
+T* (      central place par) Tj
+T* (      withCredentials: true, // Cookie requests allow) Tj
+T* (    }\);) Tj
+T* () Tj
+T* (Snippet F: order creation) Tj
+T* () Tj
+T* (    API.post\("/newOrder", {) Tj
+T* (      name: uid, // Stock symbol/name) Tj
+T* (      qty: stockQuantity, // Quantity input) Tj
+T* (      price: stockPrice, // Price input) Tj
+T* (      mode: "BUY", // Order mode) Tj
+T* (    }\)) Tj
+T* (      .then\(\(\) => {) Tj
+T* (        generalContext.closeBuyWindow\(\); // Success par modal close) Tj
+T* (      }\)) Tj
+T* (      .catch\(console.error\); // Failure log) Tj
+T* () Tj
+T* (7. Interview Questions) Tj
+T* () Tj
+T* (Q. JWT cookie auth kyun?) Tj
+T* (Answer:) Tj
+T* (Cross-app login flow aur stateless verification ke liye ye good fit tha. Browser cookie) Tj
+T* (automatically request ke sath send hoti hai.) Tj
+T* () Tj
+T* (Q. Separate dashboard kyun?) Tj
+T* (Answer:) Tj
+T* (Public marketing site aur private product dashboard ko separate rakhna real-world product) Tj
+T* (structure ko better represent karta hai.) Tj
+T* () Tj
+T* (Q. Context kyun use kiya?) Tj
+T* (Answer:) Tj
+T* (Buy modal state ko watchlist se trigger karne ke liye context ne prop drilling avoid ki.) Tj
+T* () Tj
+T* (8. HR Style Answer) Tj
+T* () Tj
+T* (Ye project maine isliye banaya kyunki mujhe ek strong portfolio project chahiye tha jisme) Tj
+T* (frontend, backend, auth aur dashboard sab practical form me ho.) Tj
+T* () Tj
+T* (9. Improvements) Tj
+T* () Tj
+T* (- Protected APIs par auth middleware) Tj
+T* (- Better secure cookies) Tj
+T* (- Better validation) Tj
+T* (- Dynamic watchlist) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 63 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(- Testing) Tj
+T* () Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Pages /Count 4 /Kids [7 0 R 8 0 R 9 0 R 10 0 R] >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+9 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+10 0 obj
+<< /Type /Page /Parent 6 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 5 0 R >>
+endobj
+11 0 obj
+<< /Type /Catalog /Pages 6 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000001892 00000 n 
+0000004235 00000 n 
+0000006254 00000 n 
+0000006367 00000 n 
+0000006443 00000 n 
+0000006569 00000 n 
+0000006695 00000 n 
+0000006821 00000 n 
+0000006948 00000 n 
+trailer
+<< /Size 12 /Root 11 0 R >>
+startxref
+6998
+%%EOF

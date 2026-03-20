@@ -1,0 +1,206 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 2068 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(WEATHER APP INTERVIEW GUIDE) Tj
+T* () Tj
+T* (Ye PDF Weather App ke liye Hinglish preparation notes hai. Isme React component flow, API) Tj
+T* (integration, state management aur interview questions cover kiye gaye hain.) Tj
+T* () Tj
+T* (1. One-line Introduction) Tj
+T* () Tj
+T* (Weather App ek React + Vite based mini project hai jo city name ke basis par real-time) Tj
+T* (weather details fetch karta hai.) Tj
+T* () Tj
+T* (2. Short Interview Intro) Tj
+T* () Tj
+T* (Ye project maine React fundamentals aur API integration practice ke liye banaya. User city) Tj
+T* (search karta hai, app OpenWeather API hit karta hai aur current weather details ko Material) Tj
+T* (UI card me show karta hai.) Tj
+T* () Tj
+T* (3. Tech Stack) Tj
+T* () Tj
+T* (- React) Tj
+T* (- Vite) Tj
+T* (- Material UI) Tj
+T* (- Fetch API) Tj
+T* (- OpenWeather API) Tj
+T* (- CSS) Tj
+T* () Tj
+T* (4. Main Features) Tj
+T* () Tj
+T* (- City-based weather search) Tj
+T* (- Real-time API data fetch) Tj
+T* (- Temperature, humidity, min/max display) Tj
+T* (- Weather condition based dynamic visuals) Tj
+T* (- Error message for invalid city) Tj
+T* () Tj
+T* (5. Architecture) Tj
+T* () Tj
+T* (- App.jsx root component hai) Tj
+T* (- WeatherApp.jsx parent state hold karta hai) Tj
+T* (- SearchBox.jsx input aur API request handle karta hai) Tj
+T* (- InfoBox.jsx fetched data ko UI card me render karta hai) Tj
+T* () Tj
+T* (6. Important Code with Line Meaning) Tj
+T* () Tj
+T* (Snippet A: parent state) Tj
+T* () Tj
+T* (    import SearchBox from "./SearchBox"; // Search component import hua) Tj
+T* (    import InfoBox from "./InfoBox"; // Display component import hua) Tj
+T* (    import { useState } from "react"; // React state hook import hui) Tj
+T* () Tj
+T* (    export default function WeatherApp\(\) {) Tj
+T* (        const [weatherInfo, setWeatherInfo] = useState\({ // Weather state define hui) Tj
+T* (            city: "Delhi", // Default city) Tj
+T* (            feelsLike:24.84, // Default feels-like temp) Tj
+T* (            temp: 25.05, // Default current temp) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 2635 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(            tempMin: 25.05, // Default min temp) Tj
+T* (            tempMax: 25.05, // Default max temp) Tj
+T* (            humidity: 47, // Default humidity) Tj
+T* (            weather: "haze", // Default weather text) Tj
+T* (        }\);) Tj
+T* () Tj
+T* (        let updateInfo = \(newInfo\) => { // Child se updated data aane par chalega) Tj
+T* (            setWeatherInfo\(newInfo\); // Parent state update hogi) Tj
+T* (        }) Tj
+T* () Tj
+T* (Snippet B: API fetch) Tj
+T* () Tj
+T* (    let [city, setCity] = useState\(""\); // User input city state) Tj
+T* (    let [error, setError] = useState\(false\); // Error show karne ke liye state) Tj
+T* (    const API_URL = "https://api.openweathermap.org/data/2.5/weather"; // Weather endpoint) Tj
+T* (    const API_KEY = "6ae9cb6fb6c691bf03dadb057ab5772b"; // API key currently hardcoded hai) Tj
+T* () Tj
+T* (    let getWeatherInfo = async \(\) => {) Tj
+T* (        let response = await fetch\(${API_URL}?q=${city}&appid=${API_KEY}&units=metric\); //) Tj
+T* (        City ke basis par request) Tj
+T* (        let jsonResponse = await response.json\(\); // JSON parse hua) Tj
+T* () Tj
+T* (        let result = {) Tj
+T* (            city: city, // City save hui) Tj
+T* (            temp: jsonResponse.main.temp, // Current temp extract hua) Tj
+T* (            tempMin: jsonResponse.main.temp_min, // Min temp extract hua) Tj
+T* (            tempMax: jsonResponse.main.temp_max, // Max temp extract hua) Tj
+T* (            humidity: jsonResponse.main.humidity, // Humidity extract hui) Tj
+T* (            feelslike: jsonResponse.main.feels_like, // Feels-like value extract hui) Tj
+T* (            weather: jsonResponse.weather[0].description, // Description extract hui) Tj
+T* (        };) Tj
+T* (        return result; // Simplified result return hua) Tj
+T* (    };) Tj
+T* () Tj
+T* (Snippet C: submit handler) Tj
+T* () Tj
+T* (    let handleSubmit = async \(evt\) => {) Tj
+T* (        evt.preventDefault\(\); // Browser page reload roka) Tj
+T* (        try {) Tj
+T* (            let newInfo = await getWeatherInfo\(\); // Fresh weather data fetch hua) Tj
+T* (            updateInfo\(newInfo\); // Parent ko update diya) Tj
+T* (            setCity\(""\); // Input reset hua) Tj
+T* (        } catch \(err\) {) Tj
+T* (            setError\(true\); // Failure par error message show hoga) Tj
+T* (        }) Tj
+T* (    };) Tj
+T* () Tj
+T* (Snippet D: conditional UI) Tj
+T* () Tj
+T* (    image={) Tj
+T* (       info.humidity > 80 // High humidity check) Tj
+T* (       ? RAIN_URL // Rain image) Tj
+T* (       : info.temp > 15 // Warmer weather check) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 1197 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(       ? HOT_URL // Hot image) Tj
+T* (       : COLD_URL // Otherwise cold image) Tj
+T* (    }) Tj
+T* () Tj
+T* (7. Interview Questions) Tj
+T* () Tj
+T* (Q. Controlled input kya hota hai?) Tj
+T* (Answer:) Tj
+T* (Jab input ka value React state se manage hota hai to wo controlled input hota hai. Is app me) Tj
+T* (city field controlled hai.) Tj
+T* () Tj
+T* (Q. API response normalize kyun ki?) Tj
+T* (Answer:) Tj
+T* (UI ko simple aur readable rakhne ke liye maine API ke nested response ko flat object me) Tj
+T* (convert kiya.) Tj
+T* () Tj
+T* (Q. MUI kyun use kiya?) Tj
+T* (Answer:) Tj
+T* (Fast aur clean UI components ke liye, especially card and input components ko quickly style) Tj
+T* (karne ke liye.) Tj
+T* () Tj
+T* (8. HR Style Answer) Tj
+T* () Tj
+T* (Ye project chhota hai but fundamentals strong karta hai. Isse maine React state, props flow,) Tj
+T* (form handling aur external API integration ko clearly samjha.) Tj
+T* () Tj
+T* (9. Improvements) Tj
+T* () Tj
+T* (- API key ko .env me move karna) Tj
+T* (- Loading spinner add karna) Tj
+T* (- Better invalid city handling) Tj
+T* (- 5-day forecast add karna) Tj
+T* (- Search history add karna) Tj
+T* () Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Pages /Count 3 /Kids [6 0 R 7 0 R 8 0 R] >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+9 0 obj
+<< /Type /Catalog /Pages 5 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000002199 00000 n 
+0000004886 00000 n 
+0000006135 00000 n 
+0000006204 00000 n 
+0000006330 00000 n 
+0000006456 00000 n 
+0000006582 00000 n 
+trailer
+<< /Size 10 /Root 9 0 R >>
+startxref
+6631
+%%EOF

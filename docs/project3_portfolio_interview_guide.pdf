@@ -1,0 +1,898 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 2147 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(PROJECT 3 INTERVIEW GUIDE) Tj
+T* () Tj
+T* (Zerodha Clone Portfolio Project) Tj
+T* () Tj
+T* (Ye document interview preparation ke liye bana hai. Isme project explanation, architecture,) Tj
+T* (code flow, important snippets, HR questions, technical questions, challenges, improvements,) Tj
+T* (aur ready-made answers diye gaye hain. Language Hinglish rakhi gayi hai taki revision fast) Tj
+T* (ho.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (1. One-line Introduction) Tj
+T* () Tj
+T* (Mera Project 3 ek full-stack MERN based Zerodha Clone hai jisme maine public landing page,) Tj
+T* (JWT-based authentication, protected trading dashboard, holdings, positions, orders aur) Tj
+T* (portfolio visualization implement kiya hai.) Tj
+T* () Tj
+T* () Tj
+T* (2. 30-second Interview Intro) Tj
+T* () Tj
+T* (Ye project basically Zerodha trading platform ka simplified clone hai. Isme maine React se) Tj
+T* (landing page aur dashboard banaya, Express aur Node se backend APIs banayi, MongoDB Atlas me) Tj
+T* (data store kiya, aur JWT cookie-based auth add kiya. User signup/login kar sakta hai,) Tj
+T* (dashboard access protected hai, holdings aur positions data dekh sakta hai, aur watchlist se) Tj
+T* (buy order place kar sakta hai.) Tj
+T* () Tj
+T* () Tj
+T* (3. 60-second Detailed Intro) Tj
+T* () Tj
+T* (Is project ko maine portfolio strength ke liye banaya tha taki ek real-world product clone) Tj
+T* (ke through frontend, backend, auth, routing, API integration aur deployment samajh paun.) Tj
+T* (Project 3 main parts me divide hai:) Tj
+T* () Tj
+T* (1. Frontend landing page) Tj
+T* (2. Dashboard application) Tj
+T* (3. Backend API) Tj
+T* () Tj
+T* (Landing page public hai aur company-style product pages dikhata hai. Dashboard private hai) Tj
+T* (aur sirf authenticated users ke liye accessible hai. Backend signup, login, session) Tj
+T* (verification, logout, holdings fetch, positions fetch aur order create endpoints expose) Tj
+T* (karta hai.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (4. Tech Stack) Tj
+T* () Tj
+T* () Tj
+T* (Frontend / Dashboard) Tj
+T* (- React 19) Tj
+T* (- React Router DOM v7) Tj
+T* (- Axios) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 1324 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(- Chart.js + react-chartjs-2) Tj
+T* (- MUI icons/tooltips) Tj
+T* (- Custom CSS) Tj
+T* () Tj
+T* () Tj
+T* (Backend) Tj
+T* (- Node.js) Tj
+T* (- Express 5) Tj
+T* (- MongoDB Atlas) Tj
+T* (- Mongoose) Tj
+T* (- jsonwebtoken) Tj
+T* (- bcryptjs) Tj
+T* (- cookie-parser) Tj
+T* (- cors) Tj
+T* (- dotenv) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (5. Folder Structure Samajhne Ka Easy Tarika) Tj
+T* () Tj
+T* () Tj
+T* (frontend/) Tj
+T* (Public website jaha home, about, products, pricing, support, signup aur signin pages hain.) Tj
+T* () Tj
+T* () Tj
+T* (dashboard/) Tj
+T* (Protected trading UI jaha summary, holdings, positions, orders, funds aur watchlist features) Tj
+T* (hain.) Tj
+T* () Tj
+T* () Tj
+T* (backend/) Tj
+T* (API server jaha auth logic, MongoDB connection, schemas/models aur order/portfolio related) Tj
+T* (endpoints defined hain.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (6. Core Features) Tj
+T* () Tj
+T* () Tj
+T* (Landing Page Features) Tj
+T* (- Home page with stats and brand sections) Tj
+T* (- Product, pricing, support, about pages) Tj
+T* (- Separate signup and signin pages) Tj
+T* (- Navbar/Footer auth pages par hidden hain) Tj
+T* () Tj
+T* () Tj
+T* (Auth Features) Tj
+T* (- User signup) Tj
+T* (- User login) Tj
+T* (- JWT token generation) Tj
+T* (- Cookie-based session) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 1638 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(- Session verification endpoint) Tj
+T* (- Logout and redirect) Tj
+T* () Tj
+T* () Tj
+T* (Dashboard Features) Tj
+T* (- Protected route) Tj
+T* (- Username display) Tj
+T* (- Watchlist) Tj
+T* (- Holdings table) Tj
+T* (- Positions table) Tj
+T* (- Orders data) Tj
+T* (- Funds section) Tj
+T* (- Buy modal) Tj
+T* (- Charts for portfolio visualization) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (7. Architecture Ko Interview Me Kaise Explain Karna Hai) Tj
+T* () Tj
+T* (Maine app ko 3-layer architecture ki tarah treat kiya:) Tj
+T* () Tj
+T* (1. Presentation layer:) Tj
+T* (React frontend aur dashboard user interface handle karte hain.) Tj
+T* () Tj
+T* (2. API layer:) Tj
+T* (Express backend request/response cycle aur business logic handle karta hai.) Tj
+T* () Tj
+T* (3. Data layer:) Tj
+T* (MongoDB Atlas + Mongoose schemas/models persistent storage handle karte hain.) Tj
+T* () Tj
+T* (Data flow ye hai:) Tj
+T* (User frontend se request bhejta hai -> Axios backend hit karta hai -> Backend request) Tj
+T* (validate karta hai -> MongoDB se data fetch/save hota hai -> JSON response frontend me) Tj
+T* (render hota hai.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (8. Authentication Flow) Tj
+T* () Tj
+T* () Tj
+T* (Signup Flow) Tj
+T* (1. User signup form fill karta hai) Tj
+T* (2. Frontend /signup endpoint hit karta hai) Tj
+T* (3. Backend email normalize karta hai) Tj
+T* (4. Duplicate user check hota hai) Tj
+T* (5. Password bcrypt se hash hota hai) Tj
+T* (6. User MongoDB me save hota hai) Tj
+T* (7. JWT token generate hota hai) Tj
+T* (8. Cookie set hoti hai) Tj
+T* (9. Success response milta hai) Tj
+T* () Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 1817 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+() Tj
+T* (Login Flow) Tj
+T* (1. User signin form fill karta hai) Tj
+T* (2. Frontend /login hit karta hai) Tj
+T* (3. Backend email se user fetch karta hai) Tj
+T* (4. bcrypt.compare se password verify hota hai) Tj
+T* (5. JWT token create hota hai) Tj
+T* (6. Cookie set hoti hai) Tj
+T* (7. Frontend dashboard app me redirect karta hai) Tj
+T* () Tj
+T* () Tj
+T* (Protected Route Flow) Tj
+T* (1. Dashboard load hota hai) Tj
+T* (2. ProtectedRoute backend ko verify request bhejta hai) Tj
+T* (3. Backend cookie ka token read karta hai) Tj
+T* (4. JWT verify hota hai) Tj
+T* (5. Valid hone par username return hota hai) Tj
+T* (6. Invalid hone par signin page redirect hota hai) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (9. Important Backend Code Explanation) Tj
+T* () Tj
+T* () Tj
+T* (A. Express App Setup) Tj
+T* () Tj
+T* (Backend app me maine CORS, JSON parser aur cookie parser configure kiya. CORS me maine local) Tj
+T* (aur deployed origins allow kiye taki frontend aur dashboard dono backend ko safely access) Tj
+T* (kar saken.) Tj
+T* () Tj
+T* (Code idea:) Tj
+T* () Tj
+T* (    app.use\() Tj
+T* (      cors\({) Tj
+T* (        origin: allowedOrigins,) Tj
+T* (        credentials: true,) Tj
+T* (      }\)) Tj
+T* (    \);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (credentials: true isliye use kiya kyunki JWT token cookie me ja raha tha, aur cross-origin) Tj
+T* (cookie requests ke liye ye required hota hai.) Tj
+T* () Tj
+T* () Tj
+T* (B. User Password Hashing) Tj
+T* () Tj
+T* (User model me pre-save hook laga hai jo password ko direct plain text me store hone se) Tj
+T* (bachata hai.) Tj
+T* () Tj
+T* (    UserSchema.pre\("save", async function \(\) {) Tj
+T* (      if \(!this.isModified\("password"\)\) return;) Tj
+T* (      this.password = await bcrypt.hash\(this.password, 12\);) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 1964 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(    }\);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Maine hashing model layer me rakhi taki chahe signup controller se save aaye ya future me) Tj
+T* (kisi aur flow se, password consistently hashed hi store ho.) Tj
+T* () Tj
+T* () Tj
+T* (C. Signup Logic) Tj
+T* () Tj
+T* (Signup me input validate hota hai, duplicate email check hota hai, user create hota hai,) Tj
+T* (then token generate hota hai.) Tj
+T* () Tj
+T* (    const existingUser = await UserModel.findOne\({ email: normalizedEmail }\);) Tj
+T* (    if \(existingUser\) {) Tj
+T* (      return res.status\(409\).json\({ message: "User already exists", success: false }\);) Tj
+T* (    }) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (409 Conflict use kiya because duplicate resource create karne ki attempt ho rahi thi.) Tj
+T* () Tj
+T* () Tj
+T* (D. Login Logic) Tj
+T* () Tj
+T* (Login me pehle user fetch hota hai, phir bcrypt.compare se password match hota hai.) Tj
+T* () Tj
+T* (    const auth = await bcrypt.compare\(password, user.password\);) Tj
+T* (    if \(!auth\) {) Tj
+T* (      return res.status\(401\).json\({ message: "Incorrect password or email", success: false }\);) Tj
+T* (    }) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Maine same error message for wrong email/password use kiya taki attacker ko exact failure) Tj
+T* (reason na mile.) Tj
+T* () Tj
+T* () Tj
+T* (E. Session Verification) Tj
+T* () Tj
+T* (Protected dashboard ke liye backend cookie read karke token verify karta hai.) Tj
+T* () Tj
+T* (    const token = req.cookies.token;) Tj
+T* (    jwt.verify\(token, process.env.TOKEN_KEY, async \(err, data\) => {) Tj
+T* (      ...) Tj
+T* (    }\);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Ye endpoint frontend ko lightweight session check deta hai bina bar-bar full user profile) Tj
+T* (load kiye.) Tj
+T* () Tj
+T* () Tj
+T* (F. Order API) Tj
+T* () Tj
+T* (Buy modal se order create request backend ko bheji jaati hai aur MongoDB me save hoti hai.) Tj
+T* () Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Length 1850 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(    const newOrder = new OrdersModel\({) Tj
+T* (      name: req.body.name,) Tj
+T* (      qty: req.body.qty,) Tj
+T* (      price: req.body.price,) Tj
+T* (      mode: req.body.mode,) Tj
+T* (    }\);) Tj
+T* (    await newOrder.save\(\);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Current version me ye demo order placement hai, production-grade order matching system nahi.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (10. Important Frontend/Dashboard Code Explanation) Tj
+T* () Tj
+T* () Tj
+T* (A. Axios Instance) Tj
+T* () Tj
+T* (Frontend aur dashboard dono me shared Axios instance use hua jisse base URL aur cookie) Tj
+T* (credentials centrally control hote hain.) Tj
+T* () Tj
+T* (    const API = axios.create\({) Tj
+T* (      baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:3002",) Tj
+T* (      withCredentials: true,) Tj
+T* (    }\);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Ye pattern future maintainability improve karta hai because har API call me repeated config) Tj
+T* (likhne ki zarurat nahi padti.) Tj
+T* () Tj
+T* () Tj
+T* (B. Signup Form Validation) Tj
+T* () Tj
+T* (Frontend side pe basic password length validation diya gaya hai taki unnecessary backend hit) Tj
+T* (kam ho.) Tj
+T* () Tj
+T* (    if \(password.trim\(\).length < 8\) {) Tj
+T* (      setMessage\({ text: "Password must be at least 8 characters long", type: "error" }\);) Tj
+T* (      return;) Tj
+T* (    }) Tj
+T* () Tj
+T* () Tj
+T* (C. Dashboard Redirect After Login) Tj
+T* () Tj
+T* (Signin successful hone ke baad user ko landing page app se dashboard app me redirect kiya) Tj
+T* (jata hai.) Tj
+T* () Tj
+T* (    const dashboardUrl = \() Tj
+T* (      process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001") Tj
+T* (    \).replace\(/\\/+$/, ""\);) Tj
+T* (    window.location.href = ${dashboardUrl}/#/;) Tj
+T* () Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Length 1949 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(Interview answer:) Tj
+T* (Maine dashboard ko separate React app rakha tha, isliye redirect environment variable based) Tj
+T* (rakha for local and production compatibility.) Tj
+T* () Tj
+T* () Tj
+T* (D. ProtectedRoute) Tj
+T* () Tj
+T* (Dashboard load hone par verify API hit hoti hai aur uske basis par route allow ya redirect) Tj
+T* (hota hai.) Tj
+T* () Tj
+T* (    useEffect\(\(\) => {) Tj
+T* (      API.post\("/"\)) Tj
+T* (        .then\(\(res\) => {) Tj
+T* (          if \(res.data.status\) setStatus\("auth"\);) Tj
+T* (          else setStatus\("unauth"\);) Tj
+T* (        }\)) Tj
+T* (        .catch\(\(\) => setStatus\("unauth"\)\);) Tj
+T* (    }, []\);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Isse unauthorized user dashboard UI dekh hi nahi pata. Client-side route protection alone) Tj
+T* (enough nahi hota, isliye backend verification bhi important tha.) Tj
+T* () Tj
+T* () Tj
+T* (E. React Context For Buy Modal) Tj
+T* () Tj
+T* (Buy modal open/close state ko prop drilling se bachane ke liye context use hua.) Tj
+T* () Tj
+T* (    const GeneralContext = React.createContext\({) Tj
+T* (      openBuyWindow: \(uid\) => {},) Tj
+T* (      closeBuyWindow: \(\) => {},) Tj
+T* (    }\);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Ye chhota but useful example hai jaha context justified tha, kyunki watchlist item se modal) Tj
+T* (trigger ho raha tha aur state multiple components me share ho rahi thi.) Tj
+T* () Tj
+T* () Tj
+T* (F. Holdings Data Fetch) Tj
+T* () Tj
+T* (    useEffect\(\(\) => {) Tj
+T* (      API.get\("/allHoldings"\)) Tj
+T* (        .then\(\(res\) => setAllHoldings\(res.data\)\)) Tj
+T* (        .catch\(\(err\) => console.error\(err\)\);) Tj
+T* (    }, []\);) Tj
+T* () Tj
+T* (Interview answer:) Tj
+T* (Data fetch ke baad frontend derived values calculate karta hai jaise current value aur P&L.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (11. Interview Me Code Walkthrough Ka Best Sequence) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Length 2312 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+() Tj
+T* (Agar interviewer bole "project explain karo", to ye order follow karna:) Tj
+T* () Tj
+T* (1. Problem statement) Tj
+T* (2. Tech stack) Tj
+T* (3. High-level architecture) Tj
+T* (4. Auth flow) Tj
+T* (5. Dashboard features) Tj
+T* (6. API integration) Tj
+T* (7. Challenges) Tj
+T* (8. Improvements) Tj
+T* () Tj
+T* (Sample answer:) Tj
+T* () Tj
+T* ("Maine Zerodha Clone banaya jo MERN stack par based hai. Iska purpose real-world trading) Tj
+T* (platform architecture ko samajhna tha. Public landing page React me hai, private dashboard) Tj
+T* (separate React app me hai, backend Express me hai, aur data MongoDB Atlas me store hota hai.) Tj
+T* (Authentication JWT cookie-based hai. Dashboard access se pehle backend session verify hota) Tj
+T* (hai. Holdings, positions aur orders backend APIs se aate hain, aur charts ke through) Tj
+T* (visualize kiye gaye hain.") Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (12. HR Questions Aur Best Hinglish Answers) Tj
+T* () Tj
+T* () Tj
+T* (Q1. Is project ko banane ka reason kya tha?) Tj
+T* (Answer:) Tj
+T* (Maine ye project isliye choose kiya kyunki mujhe ek aisa product banana tha jo real-world) Tj
+T* (complexity dikhaye. Simple CRUD app ke bajay maine auth, protected routes, multiple) Tj
+T* (frontends, API integration aur dashboard UI jaisa practical use case build kiya.) Tj
+T* () Tj
+T* () Tj
+T* (Q2. Is project me aapka exact contribution kya tha?) Tj
+T* (Answer:) Tj
+T* (Is project me maine architecture decide kiya, frontend pages banaye, auth flow implement) Tj
+T* (kiya, backend APIs likhi, MongoDB models create kiye, dashboard integrate kiya aur) Tj
+T* (deployment configuration bhi handle ki.) Tj
+T* () Tj
+T* () Tj
+T* (Q3. Sabse challenging part kya tha?) Tj
+T* (Answer:) Tj
+T* (Sabse challenging part cross-app authentication aur protected dashboard flow tha, kyunki) Tj
+T* (frontend aur dashboard alag apps the. Cookie-based JWT auth, CORS aur redirects ko sahi) Tj
+T* (tarike se configure karna important tha.) Tj
+T* () Tj
+T* () Tj
+T* (Q4. Is project se aapne kya seekha?) Tj
+T* (Answer:) Tj
+T* (Maine seekha ki frontend banana enough nahi hota. Real application me auth, error handling,) Tj
+T* (environment variables, deployment, security basics aur maintainable structure equally) Tj
+T* (important hote hain.) Tj
+ET
+endstream
+endobj
+10 0 obj
+<< /Length 2170 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+() Tj
+T* () Tj
+T* (Q5. Agar dubara banaoge to kya improve karoge?) Tj
+T* (Answer:) Tj
+T* (Main role-based auth, refresh token strategy, better form validation, live stock APIs,) Tj
+T* (reusable hooks, better test coverage aur secure cookie settings improve karunga.) Tj
+T* () Tj
+T* () Tj
+T* (Q6. Team project hota to aap kaise kaam karte?) Tj
+T* (Answer:) Tj
+T* (Main modules split karta jaise auth, dashboard, UI, backend APIs. Fir Git branches, PR) Tj
+T* (reviews aur shared API contracts ke through coordination rakhta.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (13. Technical Interview Questions With Answers) Tj
+T* () Tj
+T* () Tj
+T* (Q1. MERN kyun choose kiya?) Tj
+T* (Answer:) Tj
+T* (MERN me JavaScript end-to-end use hoti hai, isliye development fast hota hai aur context) Tj
+T* (switching kam hoti hai. React dynamic UI ke liye achha hai, Express lightweight APIs ke) Tj
+T* (liye, aur MongoDB flexible schema ke liye helpful tha.) Tj
+T* () Tj
+T* () Tj
+T* (Q2. Separate frontend aur dashboard apps kyun banaye?) Tj
+T* (Answer:) Tj
+T* (Maine public marketing site aur authenticated dashboard ko logically separate rakha. Isse) Tj
+T* (deployment, routing aur responsibility clear rahi. Real products me bhi marketing site aur) Tj
+T* (app dashboard aksar alag hote hain.) Tj
+T* () Tj
+T* () Tj
+T* (Q3. JWT cookie-based auth kyun?) Tj
+T* (Answer:) Tj
+T* (JWT stateless verification deta hai aur cookie-based transport se session-like experience) Tj
+T* (milta hai. Frontend har request ke sath cookie bhej sakta hai without manually token attach) Tj
+T* (kiye.) Tj
+T* () Tj
+T* () Tj
+T* (Q4. Password hashing kaise implement kiya?) Tj
+T* (Answer:) Tj
+T* (Maine Mongoose pre-save hook use kiya aur bcryptjs se password ko 12 salt rounds ke sath) Tj
+T* (hash kiya. Isse plain password DB me kabhi save nahi hota.) Tj
+T* () Tj
+T* () Tj
+T* (Q5. ProtectedRoute ka role kya hai?) Tj
+T* (Answer:) Tj
+T* (ProtectedRoute frontend par unauthorized access ko rokta hai. Dashboard mount hone par) Tj
+T* (backend session verify karta hai aur agar token invalid ya missing hai to signin page) Tj
+T* (redirect kar deta hai.) Tj
+T* () Tj
+T* () Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Length 2258 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(Q6. CORS me credentials: true kyun?) Tj
+T* (Answer:) Tj
+T* (Kyuki cookie-based auth use ho raha tha. Agar cross-origin cookie requests allow karni hain) Tj
+T* (to both backend CORS aur frontend Axios me credentials enable karna padta hai.) Tj
+T* () Tj
+T* () Tj
+T* (Q7. MongoDB kyun use kiya?) Tj
+T* (Answer:) Tj
+T* (Project ka data structure relatively flexible tha aur MERN ecosystem ke sath MongoDB natural) Tj
+T* (fit tha. Mongoose ke through schemas aur models manage karna easy raha.) Tj
+T* () Tj
+T* () Tj
+T* (Q8. Frontend state management kaise handle ki?) Tj
+T* (Answer:) Tj
+T* (Simple local states useState aur data fetch ke liye useEffect use kiya. Jaha cross-component) Tj
+T* (communication needed thi, jaise buy modal, waha React Context use kiya.) Tj
+T* () Tj
+T* () Tj
+T* (Q9. Watchlist static kyun hai?) Tj
+T* (Answer:) Tj
+T* (Current version me watchlist demo/static data par based hai kyunki focus product) Tj
+T* (architecture aur dashboard experience par tha. Future version me live market API integrate) Tj
+T* (ki ja sakti hai.) Tj
+T* () Tj
+T* () Tj
+T* (Q10. Error handling kaise ki?) Tj
+T* (Answer:) Tj
+T* (Frontend me try/catch aur API error messages show kiye, backend me validation aur proper) Tj
+T* (status codes return kiye. Example: 400 for bad input, 401 for invalid credentials, 409 for) Tj
+T* (duplicate user, 500 for server errors.) Tj
+T* () Tj
+T* () Tj
+T* (Q11. Deployment me kya dhyan rakha?) Tj
+T* (Answer:) Tj
+T* (Environment variables, allowed origins, API base URLs, frontend/dashboard redirect URLs aur) Tj
+T* (production cookie settings important the.) Tj
+T* () Tj
+T* () Tj
+T* (Q12. Scalability ke liye kya changes karoge?) Tj
+T* (Answer:) Tj
+T* (Main controllers ko services me break karunga, centralized error middleware add karunga,) Tj
+T* (request validation layer add karunga, caching aur pagination use karunga, aur static/demo) Tj
+T* (data ko proper DB-driven modules me convert karunga.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (14. Tricky Questions Jo Interviewer Puch Sakta Hai) Tj
+T* () Tj
+T* () Tj
+T* (Q1. httpOnly: false kyun hai? Kya ye secure hai?) Tj
+T* (Answer:) Tj
+T* (Current implementation me ye ideal nahi hai. Production-grade app me cookie ko httpOnly:) Tj
+ET
+endstream
+endobj
+12 0 obj
+<< /Length 2240 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(true rakhna better hota hai taki JavaScript directly token access na kar sake. Ye meri) Tj
+T* (improvement list me hai.) Tj
+T* () Tj
+T* () Tj
+T* (Q2. Verification endpoint root path / par kyun hai?) Tj
+T* (Answer:) Tj
+T* (Ye working implementation hai but semantic clarity ke liye /verify ya /auth/verify better) Tj
+T* (hota. Future refactor me endpoint naming improve karunga.) Tj
+T* () Tj
+T* () Tj
+T* (Q3. Kya login ke baad backend protected APIs bhi secure hain?) Tj
+T* (Answer:) Tj
+T* (Abhi dashboard entry secure hai, lekin production app me holdings/order endpoints par bhi) Tj
+T* (auth middleware lagna chahiye. Demo version me focus primary auth flow par tha.) Tj
+T* () Tj
+T* () Tj
+T* (Q4. Real trading app jaisa kya missing hai?) Tj
+T* (Answer:) Tj
+T* (Live market feed, websocket updates, actual broker integration, transaction ledger, risk) Tj
+T* (checks, input validation hardening, audit logs aur role-based access control missing hain.) Tj
+T* () Tj
+T* () Tj
+T* (Q5. Summary component me static user text hai, kyun?) Tj
+T* (Answer:) Tj
+T* (Ye dashboard UI ka placeholder part hai. Username sidebar me real session data se aa raha) Tj
+T* (hai, aur future enhancement me summary section bhi session-aware banaya ja sakta hai.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (15. Honest Project Limitations) Tj
+T* () Tj
+T* (- Holdings and positions APIs public hain, unpe auth middleware nahi laga) Tj
+T* (- Watchlist static data use karti hai) Tj
+T* (- Summary mostly static hai) Tj
+T* (- Search input UI-only hai, actual filtering nahi) Tj
+T* (- Buy window draggable UI demo hai, advanced validation nahi) Tj
+T* (- Cookie security configuration production-grade nahi) Tj
+T* (- Automated testing absent hai) Tj
+T* () Tj
+T* (Interview me limitation accept karna plus improvement explain karna strong signal hota hai.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (16. Future Improvements) Tj
+T* () Tj
+T* (- httpOnly: true secure cookies) Tj
+T* (- Dedicated auth routes like /auth/login, /auth/verify) Tj
+T* (- Protected portfolio/order APIs) Tj
+T* (- Zod/Joi/express-validator based request validation) Tj
+T* (- Reusable custom hooks for API fetching) Tj
+T* (- Global error handling middleware) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Length 2595 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(- Real-time stock data integration) Tj
+T* (- Unit and integration tests) Tj
+T* (- Better loading, skeleton and empty states) Tj
+T* (- User-specific holdings and orders) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (17. Resume/Portfolio Description) Tj
+T* () Tj
+T* () Tj
+T* (Short Version) Tj
+T* (Built a full-stack Zerodha Clone using MERN with JWT authentication, protected dashboard) Tj
+T* (routing, MongoDB-backed holdings/orders data, and interactive portfolio visualizations.) Tj
+T* () Tj
+T* () Tj
+T* (Medium Version) Tj
+T* (Developed a full-stack Zerodha-inspired trading platform clone using Node.js, Express, and) Tj
+T* (MongoDB. Implemented JWT cookie-based authentication, protected dashboard access, portfolio) Tj
+T* (data views for holdings/positions/orders, reusable Axios API layer, and chart-based data) Tj
+T* (visualization.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (18. Interview Me Bolne Layak 5 Strong Points) Tj
+T* () Tj
+T* (1. Ye sirf UI clone nahi hai, full-stack flow hai.) Tj
+T* (2. Isme authentication + protected routing implemented hai.) Tj
+T* (3. Public site aur private dashboard ka separation real-product thinking dikhata hai.) Tj
+T* (4. MongoDB, Express, React aur deployment configuration ka practical use hai.) Tj
+T* (5. Maine sirf features nahi banaye, architecture aur security basics bhi sochi.) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (19. 2-minute Full Answer Ready Script) Tj
+T* () Tj
+T* ("Mera third project ek Zerodha Clone hai jo maine MERN stack me build kiya. Is project ka) Tj
+T* (main goal tha ek real-world level application banana jisme frontend, backend,) Tj
+T* (authentication, routing aur database sab components ka use ho. Maine is project ko 3 parts) Tj
+T* (me divide kiya: ek public landing page, ek protected trading dashboard aur ek Express) Tj
+T* (backend API. User signup/login kar sakta hai, password bcrypt se hash hota hai, JWT token) Tj
+T* (cookie me store hota hai, aur dashboard open hone se pehle session verification hota hai.) Tj
+T* (Dashboard me holdings, positions, orders, funds aur watchlist features hain. Buy action) Tj
+T* (modal se order create request backend ko bheji jaati hai. Charts ke through portfolio data) Tj
+T* (visualize bhi kiya gaya hai. Is project me maine API integration, auth flow, state) Tj
+T* (management, MongoDB models aur deployment-related issues ko handle kiya. Agar mujhe isse aur) Tj
+T* (improve karna ho to main secure cookies, protected data endpoints, better validation, tests) Tj
+T* (aur live stock APIs add karunga.") Tj
+T* () Tj
+T* () Tj
+T* () Tj
+ET
+endstream
+endobj
+14 0 obj
+<< /Length 2001 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+() Tj
+T* (20. Fast Revision Notes) Tj
+T* () Tj
+T* (- MERN stack project) Tj
+T* (- Separate landing page + dashboard) Tj
+T* (- JWT cookie auth) Tj
+T* (- bcrypt password hashing) Tj
+T* (- ProtectedRoute session verify karta hai) Tj
+T* (- Axios with withCredentials) Tj
+T* (- MongoDB Atlas for persistence) Tj
+T* (- Orders POST API available) Tj
+T* (- Holdings and positions GET APIs) Tj
+T* (- React Context for buy modal) Tj
+T* (- Charts for dashboard visualization) Tj
+T* (- Improvement: secure auth, protected APIs, tests) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (21. Important File Mapping) Tj
+T* () Tj
+T* (- backend/index.js -> Express app setup, CORS, routes, DB connect) Tj
+T* (- backend/controllers/AuthController.js -> signup/login logic) Tj
+T* (- backend/Middlewares/AuthMiddleWare.js -> token verification) Tj
+T* (- backend/model/UserModel.js -> password hashing hook) Tj
+T* (- backend/Routes/AuthRoute.js -> auth routes) Tj
+T* (- frontend/src/api.js -> frontend Axios config) Tj
+T* (- frontend/src/landing_page/signup/Signup.jsx -> signup UI and API call) Tj
+T* (- frontend/src/landing_page/signup/signIn.jsx -> signin UI and dashboard redirect) Tj
+T* (- dashboard/src/components/ProtectedRoute.js -> dashboard guard) Tj
+T* (- dashboard/src/components/GeneralContext.js -> buy modal context) Tj
+T* (- dashboard/src/components/WatchList.js -> watchlist UI and actions) Tj
+T* (- dashboard/src/components/BuyActionWindow.js -> order placement UI) Tj
+T* (- dashboard/src/components/Holdings.js -> holdings fetch and table) Tj
+T* (- dashboard/src/components/Positions.js -> positions fetch and table) Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* () Tj
+T* (22. Best Closing Line For Interview) Tj
+T* () Tj
+T* (Agar concise close dena ho to bolo:) Tj
+T* () Tj
+T* ("Overall ye project mere liye important tha kyunki isne mujhe real application architecture,) Tj
+T* (authentication, API integration aur product thinking ek hi project me practically sikhayi.") Tj
+T* () Tj
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Pages /Count 13 /Kids [16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R] >>
+endobj
+16 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+17 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+18 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+19 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 5 0 R >>
+endobj
+20 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+21 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 7 0 R >>
+endobj
+22 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
+endobj
+23 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 9 0 R >>
+endobj
+24 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 10 0 R >>
+endobj
+25 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 11 0 R >>
+endobj
+26 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 12 0 R >>
+endobj
+27 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 13 0 R >>
+endobj
+28 0 obj
+<< /Type /Page /Parent 15 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 14 0 R >>
+endobj
+29 0 obj
+<< /Type /Catalog /Pages 15 0 R >>
+endobj
+xref
+0 30
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000002278 00000 n 
+0000003654 00000 n 
+0000005344 00000 n 
+0000007213 00000 n 
+0000009229 00000 n 
+0000011131 00000 n 
+0000013132 00000 n 
+0000015496 00000 n 
+0000017719 00000 n 
+0000020030 00000 n 
+0000022323 00000 n 
+0000024971 00000 n 
+0000027025 00000 n 
+0000027169 00000 n 
+0000027297 00000 n 
+0000027425 00000 n 
+0000027553 00000 n 
+0000027681 00000 n 
+0000027809 00000 n 
+0000027937 00000 n 
+0000028065 00000 n 
+0000028193 00000 n 
+0000028322 00000 n 
+0000028451 00000 n 
+0000028580 00000 n 
+0000028709 00000 n 
+0000028838 00000 n 
+trailer
+<< /Size 30 /Root 29 0 R >>
+startxref
+28889
+%%EOF

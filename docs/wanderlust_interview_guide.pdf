@@ -1,0 +1,223 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 1889 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(WANDERLUST INTERVIEW GUIDE) Tj
+T* () Tj
+T* (Ye PDF WanderLust project ke liye Hinglish interview preparation notes hai. Isme project) Tj
+T* (explanation, architecture, features, auth flow, important code snippets aur likely interview) Tj
+T* (questions cover kiye gaye hain.) Tj
+T* () Tj
+T* (1. One-line Introduction) Tj
+T* () Tj
+T* (WanderLust ek full-stack Airbnb-style travel listing platform hai jo Node.js, Express,) Tj
+T* (MongoDB aur EJS par build kiya gaya hai.) Tj
+T* () Tj
+T* (2. Short Interview Intro) Tj
+T* () Tj
+T* (WanderLust mera server-rendered full-stack project hai jisme users signup/login kar sakte) Tj
+T* (hain, listings create/edit/delete kar sakte hain, Cloudinary ke through images upload kar) Tj
+T* (sakte hain, aur Mapbox ke through location geometry generate hoti hai. Is project se maine) Tj
+T* (authentication, authorization, CRUD, validation aur media handling practically seekhi.) Tj
+T* () Tj
+T* (3. Tech Stack) Tj
+T* () Tj
+T* (- Node.js) Tj
+T* (- Express 5) Tj
+T* (- MongoDB + Mongoose) Tj
+T* (- EJS + ejs-mate) Tj
+T* (- Passport.js) Tj
+T* (- express-session) Tj
+T* (- connect-mongo) Tj
+T* (- Cloudinary) Tj
+T* (- Multer) Tj
+T* (- Mapbox) Tj
+T* (- Joi) Tj
+T* () Tj
+T* (4. Architecture) Tj
+T* () Tj
+T* (Project MVC-style structure follow karta hai:) Tj
+T* (- routes request receive karti hain) Tj
+T* (- controllers business logic chalate hain) Tj
+T* (- models data structure define karte hain) Tj
+T* (- EJS views server-side HTML render karti hain) Tj
+T* () Tj
+T* (5. Main Features) Tj
+T* () Tj
+T* (- Signup, login, logout) Tj
+T* (- Session-based authentication) Tj
+T* (- Listing CRUD) Tj
+T* (- Listing owner authorization) Tj
+T* (- Image upload to Cloudinary) Tj
+T* (- Country search) Tj
+T* (- Category filtering) Tj
+T* (- Reviews relation) Tj
+T* (- Flash messages) Tj
+T* (- Geocoded location coordinates) Tj
+T* () Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 2606 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(6. Important Code with Line Meaning) Tj
+T* () Tj
+T* (Snippet A: app startup) Tj
+T* () Tj
+T* (    if \(process.env.NODE_ENV !== "production"\) { // Sirf development me local env load ho) Tj
+T* (      require\("dotenv"\).config\(\); // .env file se secrets load ho rahe hain) Tj
+T* (    }) Tj
+T* () Tj
+T* (    const express = require\("express"\); // Express framework import hua) Tj
+T* (    const app = express\(\); // App instance create hui) Tj
+T* (    const mongoose = require\("mongoose"\); // MongoDB ODM import hua) Tj
+T* (    const session = require\("express-session"\); // Login session maintain karne ke liye) Tj
+T* (    const passport = require\("passport"\); // Auth library import hui) Tj
+T* (    const LocalStrategy = require\("passport-local"\); // Username/password auth strategy) Tj
+T* () Tj
+T* (Snippet B: session config) Tj
+T* () Tj
+T* (    const store = MongoStore.create\({ // Session data MongoDB me save hoga) Tj
+T* (      mongoUrl: dbUrl, // Database URL use ho rahi hai) Tj
+T* (      touchAfter: 24 * 3600, // Session DB writes optimize ho rahe hain) Tj
+T* (    }\);) Tj
+T* () Tj
+T* (    const sessionConfig = {) Tj
+T* (      store, // Memory ki jagah Mongo store) Tj
+T* (      secret: process.env.SESSION_SECRET || "mysupersecretcode", // Session signing secret) Tj
+T* (      resave: false, // Har request par force save avoid hota hai) Tj
+T* (      saveUninitialized: true, // New session save behavior) Tj
+T* (      cookie: {) Tj
+T* (        httpOnly: true, // Cookie JS se direct access na ho) Tj
+T* (        maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week validity) Tj
+T* (      },) Tj
+T* (    };) Tj
+T* () Tj
+T* (Snippet C: protected listing creation route) Tj
+T* () Tj
+T* (    router.route\("/"\)) Tj
+T* (      .get\(wrapAsync\(listingController.index\)\) // Sare listings fetch/render karne ke liye) Tj
+T* (      .post\() Tj
+T* (        isLoggedIn, // Sirf logged-in user create kar sake) Tj
+T* (        upload.single\("listing[image]"\), // Form se ek image upload hogi) Tj
+T* (        validateListing, // Joi validation chalegi) Tj
+T* (        wrapAsync\(listingController.createListing\) // Actual DB save logic chalega) Tj
+T* (      \);) Tj
+T* () Tj
+T* (Snippet D: create listing controller) Tj
+T* () Tj
+T* (    let response = await geocodingClient.forwardGeocode\({ // Location ko coordinates me) Tj
+T* (    convert kiya) Tj
+T* (      query: req.body.listing.location, // User-entered location) Tj
+T* (      limit: 1 // Best match only) Tj
+T* (    }\).send\(\);) Tj
+T* () Tj
+T* (    let url = req.file.path; // Uploaded image URL) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 2148 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+1 0 0 1 45 797 Tm
+(    let filename = req.file.filename; // Uploaded image filename) Tj
+T* () Tj
+T* (    const newListing = new Listing\(req.body.listing\); // Listing object create hua) Tj
+T* (    newListing.owner = req.user._id; // Current user owner bana) Tj
+T* (    newListing.image = { url, filename }; // Image metadata assign hui) Tj
+T* (    newListing.geometry = response.body.features[0].geometry; // Coordinates DB me save hui) Tj
+T* () Tj
+T* (    await newListing.save\(\); // Listing save ho gayi) Tj
+T* () Tj
+T* (Snippet E: login check middleware) Tj
+T* () Tj
+T* (    module.exports.isLoggedIn = \(req, res, next\) => {) Tj
+T* (      if \(!req.isAuthenticated\(\)\) { // Passport session se auth check) Tj
+T* (        req.session.redirectUrl = req.originalUrl; // Login ke baad wapas same page) Tj
+T* (        req.flash\("error", "You must be logged in to do that!"\); // User feedback) Tj
+T* (        return res.redirect\("/login"\); // Login page redirect) Tj
+T* (      }) Tj
+T* (      next\(\); // Authenticated user next step par jayega) Tj
+T* (    };) Tj
+T* () Tj
+T* (7. Interview Questions) Tj
+T* () Tj
+T* (Q. Passport kyun use kiya?) Tj
+T* (Answer:) Tj
+T* (Server-rendered app ke liye session-based auth natural fit tha aur Passport ne login flow ko) Tj
+T* (simplify kiya.) Tj
+T* () Tj
+T* (Q. Cloudinary kyun use kiya?) Tj
+T* (Answer:) Tj
+T* (Image storage ko local server se alag rakhne ke liye. Isse media management aur deployment) Tj
+T* (easier hota hai.) Tj
+T* () Tj
+T* (Q. Mapbox kyun add kiya?) Tj
+T* (Answer:) Tj
+T* (Listing location ko coordinates me convert karke future map support aur structured geodata) Tj
+T* (maintain karne ke liye.) Tj
+T* () Tj
+T* (8. HR Style Answer) Tj
+T* () Tj
+T* (Ye project maine backend depth aur real-world full-stack flow dikhane ke liye banaya. Isme) Tj
+T* (sirf CRUD nahi, balki auth, sessions, ownership, uploads aur validation sab saath me aate) Tj
+T* (hain.) Tj
+T* () Tj
+T* (9. Improvements) Tj
+T* () Tj
+T* (- Better security hardening) Tj
+T* (- Pagination) Tj
+T* (- Test coverage) Tj
+T* (- Better error pages) Tj
+T* (- Advanced search and filters) Tj
+T* () Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Pages /Count 3 /Kids [6 0 R 7 0 R 8 0 R] >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+9 0 obj
+<< /Type /Catalog /Pages 5 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000002020 00000 n 
+0000004678 00000 n 
+0000006878 00000 n 
+0000006947 00000 n 
+0000007073 00000 n 
+0000007199 00000 n 
+0000007325 00000 n 
+trailer
+<< /Size 10 /Root 9 0 R >>
+startxref
+7374
+%%EOF
